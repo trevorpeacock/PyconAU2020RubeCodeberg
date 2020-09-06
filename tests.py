@@ -4,7 +4,7 @@ import unittest
 
 
 def test_char(s):
-    soup = bs4.BeautifulSoup(s, 'html.parser')
+    soup = bs4.BeautifulSoup(s, 'lxml')
     return first_program.get_ascii_char(soup)
 
 
