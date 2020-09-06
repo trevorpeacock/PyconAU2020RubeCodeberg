@@ -13,5 +13,8 @@ test: venv
 generate: venv
 	bash -c ". venv/bin/activate && python generate.py"
 
+stylecheck: venv
+	bash -c ". venv/bin/activate && pycodestyle --show-source --show-pep8 *.py"
+
 clean:
 	rm -dfr venv
