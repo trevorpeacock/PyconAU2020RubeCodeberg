@@ -4,6 +4,11 @@ import unittest
 
 
 def test_char(s):
+    """
+    Take an XML string, and decode it.
+    :param s: string containing XML character representation
+    :return: numeric value
+    """
     soup = bs4.BeautifulSoup(s, 'lxml')
     return first_program.get_ascii_char(soup)
 

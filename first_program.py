@@ -10,6 +10,9 @@ import bs4
     
     A parent <count> tag doubles the value of of its contents, 
     so <count><count/></count> is 2. 
+    
+    Note: by recursively using recursion, we don't actually need to use
+    multiplication to decode values.
 """
 
 xml = """<message>
@@ -141,26 +144,36 @@ xml = """<message>
 </message>"""
 
 
-def get_ascii_char(node):
+def process_count(node):
     """
-    Process the contents of a <character> element, and determine its ascii value
+    Count <count> elements, and determine the characters ascii value
 
     By recursively walking the XML tree, and using find_all, which also
     recursively returns all descendants, the deeper a count node is in the
-    tree, the more often it is counted.
+    tree, the more often it is counted. We don't actually have to double anything.
 
     :param node: element tag of the character element
     :return: ascii value
     """
     total = 0
     counts = list(node.find_all('count'))
-    print(node, counts)
     # dangling count elements have the value 1
     if not counts:
         return 1
     return sum([
-        get_ascii_char(count) for count in counts
+        process_count(count) for count in counts
     ])
+
+def get_ascii_char(node):
+    """
+    Process the contents of a <character> element, and determine its ascii value
+    :param node:
+    :return:
+    """
+    ascii_char = 0
+    for count in node.find_all('count'):
+        ascii_char += process_count(count)
+    return ascii_char
 
 
 if __name__ == '__main__':
