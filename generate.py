@@ -25,7 +25,7 @@ def generate_xml(ascii_value):
     return xml
 
 
-for c in 'Hello World!':
+for c in 'Hello world!':
     o = ord(c)
     xml_character = generate_xml(o)
     print('<character>\n{}\n</character>'.format(xml_character))

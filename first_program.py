@@ -79,13 +79,16 @@ xml = """<message>
         <count>
             <count>
                 <count><count>
-                    <count><count><count/></count></count>
+                    <count>
+                        <count><count/></count>
+                        <count/>
+                    </count>
                     <count/>
                 </count></count>
                 <count/>
-            </count>
+                </count>
             <count/>
-        </count>
+            </count>
         <count/>
     </character>
     <character>
